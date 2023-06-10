@@ -1,0 +1,52 @@
+<mat-sidenav-container>
+    <mat-sidenav #drawer fixedInViewport="true" mode="side" opened="true" style="width: 230px; ">
+        <mat-toolbar class="sidebar-style" color="primary" fxLayout fxLayoutGap="16px">
+            <img class="logo" src="../assets/images/logo.png">
+        </mat-toolbar>
+        <mat-nav-list  *ngIf="isManagementSystemActive">
+            <a mat-list-item routerLink="/"><span class="nav-item"><mat-icon>desktop_windows</mat-icon> <span
+                        class="nav-item-text">Dashboard</span></span></a>
+            <a mat-list-item routerLink="/staff"><span class="nav-item"><mat-icon>people</mat-icon> <span
+                        class="nav-item-text">Staff</span></span></a>
+        </mat-nav-list>
+
+        <mat-nav-list  *ngIf="isFrontendEditorActive">
+            <a mat-list-item routerLink="/slider"><span class="nav-item"><mat-icon>view_array</mat-icon> <span
+                        class="nav-item-text">Slider</span></span></a>
+            <a mat-list-item routerLink="/about"><span class="nav-item"><mat-icon>info</mat-icon> <span
+                        class="nav-item-text">Qui somme nous ?</span></span></a>
+            <a mat-list-item routerLink="/service"><span class="nav-item"><mat-icon>format_list_bulleted</mat-icon> <span
+                        class="nav-item-text">Service</span></span></a>
+            <a mat-list-item routerLink="/tech"><span class="nav-item"><mat-icon>code</mat-icon>
+                    <span class="nav-item-text">Nos technologies</span></span></a>
+            <a mat-list-item routerLink="/team"><span class="nav-item"><mat-icon>people</mat-icon>
+                    <span class="nav-item-text">Notre equipe</span></span></a>
+            <a mat-list-item routerLink="/location"><span class="nav-item"><mat-icon>location_on</mat-icon>
+                    <span class="nav-item-text">Location</span></span></a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-raised-button [disabled]="isFrontendEditorActive" [ngClass]="{'active': isFrontendEditorActive}" (click)="activateFrontendEditor()">
+          FrontEnd Editor
+        </button>
+        <button mat-raised-button [disabled]="isManagementSystemActive" [ngClass]="{'active': isManagementSystemActive}" (click)="activateManagementSystem()">
+          Management system
+        </button>
+          <button class="btn-primary" mat-menu-item></button>
+            <div fxFlex fxLayout fxLayoutAlign="start center">
+
+
+                <div fxFlex></div>
+
+                <div class="toolbar-separator"></div>
+                <button class="" mat-menu-item>
+                    <mat-icon>power_settings_new</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+        <div class="content mt-80 mx-16">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

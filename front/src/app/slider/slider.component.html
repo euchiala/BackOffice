@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div formArrayName="files">
+    <div *ngFor="let file of files.controls; let i = index">
+      <input type="file" (change)="onFileSelected($event, i)" accept="image/*" name="file">
+      <button mat-icon-button color="warn" (click)="removeFile(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <button type="button" mat-raised-button color="primary" (click)="addFileInput()">Add File</button>
+  <button type="submit" mat-raised-button color="primary">Save</button>
+</form>
