@@ -5,6 +5,7 @@ var app = express()
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
 
 //Route for front-end
 app.get('/', (req,res) => {

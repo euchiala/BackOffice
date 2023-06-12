@@ -26,28 +26,16 @@ const upload = multer({ storage: storage, fileFilter: fileFilter }).single(
 );
 
 exports.create = (req, res) => {
-  if (req.file) {
-    upload(req, res, function (err) {
-      if (err) {
-        return res.status(400).send({ message: err.message });
-      }
+  upload(req, res, function (err) {
+    if (err) {
+      return res.status(400).send({ message: err.message });
+    }
 
-      if (!req.file) {
-        return res.status(400).send({ message: "No file uploaded." });
-      }
-
-      const frontContent = new FrontContent(req.body);
-      frontContent.file = req.file.path;
-      FrontContent.create(frontContent, (err, data) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.status(201).send(data);
-        }
-      });
-    });
-  } else {
     const frontContent = new FrontContent(req.body);
+    if (req.file) {
+      frontContent.file = req.file.path;
+    }
+
     FrontContent.create(frontContent, (err, data) => {
       if (err) {
         res.status(500).send(err);
@@ -55,8 +43,9 @@ exports.create = (req, res) => {
         res.status(201).send(data);
       }
     });
-  }
+  });
 };
+
 
 exports.update = (req, res) => {
   if (req.file) {
@@ -145,6 +134,21 @@ exports.getAll = (req, res) => {
     }
   });
 };
+
+exports.findOne = (req, res) => {
+  const {reference} = req.params;
+  FrontContent.findByReference(reference, (err, data) => {
+      if (err) {
+          if (err.type === 'not_found') {
+              res.status(404).send({message: `frontContent with reference ${reference} NOT FOUND`});
+          } else {
+              res.status(500).send({message: `Error getting frontContent with reference ${reference}`});
+          }
+      } else {
+          res.status(200).send(data);
+      }
+  })
+}
 exports.delete = (req, res) => {
   FrontContent.delete(req.params.id, (err, data) => {
     if (err) {

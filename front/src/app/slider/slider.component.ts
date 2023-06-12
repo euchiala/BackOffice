@@ -12,6 +12,8 @@ import { FrontContentService } from './../services/front-content.service';
 export class SliderComponent implements OnInit {
   form!: FormGroup;
   files!: FormArray;
+  dataSource :any;
+
 
   constructor(
     private frontContentService: FrontContentService,
@@ -22,10 +24,20 @@ export class SliderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      files: this.formBuilder.array([])
+    this.form = new FormGroup({
+      files: new FormArray([])
     });
     this.files = this.form.get('files') as FormArray;
+
+    this.frontContentService.getByReference('slider').subscribe((items)=>{
+      for (var i = 0; i < Object.keys(items).length; i++) {
+        console.log(items[i].file)
+        items[i].file = 'http://localhost:3000/'+items[i].file.replace(/\\/g, '/');
+      }
+      this.dataSource = items;
+      console.log(this.dataSource);
+    });
+
   }
 
   addFileInput() {
@@ -60,6 +72,8 @@ export class SliderComponent implements OnInit {
     const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files?.[0];
     if (file) {
+      console.log(this.files.controls)
+
       this.selectedFiles[index] = file;
       this.files.controls[index].setValue(file.name); // Update the FormControl with the file name
     }

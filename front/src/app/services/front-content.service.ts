@@ -7,7 +7,7 @@ import { API_URL } from '../config/globals';
   providedIn: 'root'
 })
 export class FrontContentService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
     return this.http.get(API_URL + 'frontcontent');
@@ -18,6 +18,9 @@ export class FrontContentService {
     } else {
       return this.http.post(API_URL + 'frontcontent', data);
     }
+  }
+  getByReference(reference: any): Observable<any> {
+    return this.http.get(API_URL + `frontcontent/${reference}`);
   }
   delete(id: any): Observable<any> {
     return this.http.delete(API_URL + `frontcontent/${id}`);

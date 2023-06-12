@@ -54,7 +54,7 @@ const routes: Routes = [
     component:OurServiceComponent,
   },
   {
-    path:'slider',
+    path:'slider/:reference',
     pathMatch:'full',
     component:SliderComponent,
   },

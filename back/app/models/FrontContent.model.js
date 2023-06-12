@@ -30,6 +30,15 @@ FrontContent.getAll = (result) => {
   });
 };
 
+FrontContent.findByReference = (reference, result) => {
+  sql.query(`SELECT * FROM frontcontent WHERE reference = '${reference}'`, (err, res) => {
+      if(err)
+          result(err, null);
+      else
+          result(null, res);
+  });
+};
+
 FrontContent.updateByID = (id, object, result) => {
   sql.query(
     'UPDATE frontcontent SET header = ?, subheader = ?, text = ?, links = ?, reference = ? WHERE id = ?',
