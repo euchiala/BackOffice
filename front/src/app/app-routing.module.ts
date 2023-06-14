@@ -11,6 +11,8 @@ import { OurServiceComponent } from './our-service/our-service.component';
 import { SliderComponent } from './slider/slider.component';
 import { TeamComponent } from './team/team.component';
 import { TechComponent } from './tech/tech.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -69,10 +71,20 @@ const routes: Routes = [
     component:TechComponent,
   },
   {
-    path:'',
+    path:'dashboard',
     pathMatch:'full',
     component:DashboardComponent,
-  }
+  },
+  {
+    path:'',
+    pathMatch:'full',
+    component:LoginComponent,
+  },
+  {
+    path:'register',
+    pathMatch:'full',
+    component:RegisterComponent,
+  },
 ];
 
 @NgModule({

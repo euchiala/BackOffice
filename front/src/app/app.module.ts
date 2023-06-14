@@ -39,6 +39,8 @@ import { OurServiceComponent } from './our-service/our-service.component';
 import { TechComponent } from './tech/tech.component';
 import { TeamComponent } from './team/team.component';
 import { LocationComponent } from './location/location.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -56,7 +58,9 @@ import { LocationComponent } from './location/location.component';
     OurServiceComponent,
     TechComponent,
     TeamComponent,
-    LocationComponent
+    LocationComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     HttpClientModule,

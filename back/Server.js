@@ -16,6 +16,7 @@ require('./app/routes/Att-Histo.routes')(app);
 require('./app/routes/Planning.routes')(app);
 require('./app/routes/Staff.routes')(app);
 require('./app/routes/FrontContent.routes')(app);
+require('./app/routes/Login.routes')(app);
 
 
 app.listen(3000, () => {
