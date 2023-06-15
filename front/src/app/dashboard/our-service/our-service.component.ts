@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FrontContentService } from './../services/front-content.service';
+import { FrontContentService } from '../../services/front-content.service';
 
 @Component({
   selector: 'app-our-service',

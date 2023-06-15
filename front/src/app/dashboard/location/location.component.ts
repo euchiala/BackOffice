@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FrontContentService } from './../services/front-content.service';
+import { FrontContentService } from '../../services/front-content.service';
 
 @Component({
   selector: 'app-location',

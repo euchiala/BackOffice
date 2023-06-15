@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
-import { StaffService } from '../services/staff.service';
-import { AttHistoService } from '../services/att-histo.service';
-import { formatDate } from '../config/formatDate';
+import { StaffService } from '../../services/staff.service';
+import { AttHistoService } from '../../services/att-histo.service';
+import { formatDate } from '../../config/formatDate';
 @Component({
     selector: 'app-staff-list',
     templateUrl: './staff-list.component.html',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
-import { AttHistoService } from '../services/att-histo.service';
-import { formatDate } from '../config/formatDate'
+import { AttHistoService } from '../../services/att-histo.service';
+import { formatDate } from '../../config/formatDate'
 
 @Component({
   selector: 'app-staff-sheet',

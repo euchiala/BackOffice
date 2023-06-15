@@ -1,94 +1,50 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { StaffListComponent } from './staff-list/staff-list.component';
-import { StaffFormComponent } from './staff-form/staff-form.component';
-import { StaffSheetComponent } from './staff-sheet/staff-sheet.component';
-import { StaffPlanningComponent } from './staff-planning/staff-planning.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { LocationComponent } from './location/location.component';
-import { OurServiceComponent } from './our-service/our-service.component';
-import { SliderComponent } from './slider/slider.component';
-import { TeamComponent } from './team/team.component';
-import { TechComponent } from './tech/tech.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [
   {
-    path:'staff',
-    pathMatch:'full',
-    component:StaffListComponent,
-  },
-  {
-    path:'staff-form',
-    pathMatch:'full',
-    component:StaffFormComponent,
-  },
-  {
-    path: 'staff/:id/edit',
+    path: '',
+    redirectTo: 'login',
     pathMatch: 'full',
-    component: StaffFormComponent,
   },
   {
-    path: 'staff/:id/sheet',
-    pathMatch: 'full',
-    component: StaffSheetComponent,
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
+    ]
   },
   {
-    path: 'staff/:id/planning',
-    pathMatch: 'full',
-    component: StaffPlanningComponent,
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+      }
+    ]
   },
   {
-    path:'about',
-    pathMatch:'full',
-    component:AboutUsComponent,
-  },
-  {
-    path:'location',
-    pathMatch:'full',
-    component:LocationComponent,
-  },
-  {
-    path:'service',
-    pathMatch:'full',
-    component:OurServiceComponent,
-  },
-  {
-    path:'slider/:reference',
-    pathMatch:'full',
-    component:SliderComponent,
-  },
-  {
-    path:'team',
-    pathMatch:'full',
-    component:TeamComponent,
-  },
-  {
-    path:'tech',
-    pathMatch:'full',
-    component:TechComponent,
-  },
-  {
-    path:'dashboard',
-    pathMatch:'full',
-    component:DashboardComponent,
-  },
-  {
-    path:'',
-    pathMatch:'full',
-    component:LoginComponent,
-  },
-  {
-    path:'register',
-    pathMatch:'full',
-    component:RegisterComponent,
-  },
+    path: '**',
+    redirectTo: 'login'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, {
+      useHash: true
+    })
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

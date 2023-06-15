@@ -23,31 +23,31 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutComponent } from './layout/layout.component';
 import { FlexLayoutModule} from "@angular/flex-layout";
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StaffListComponent } from './staff-list/staff-list.component';
-import { StaffSheetComponent } from './staff-sheet/staff-sheet.component';
-import { StaffPlanningComponent } from './staff-planning/staff-planning.component';
-import { StaffFormComponent } from './staff-form/staff-form.component';
-import { SliderComponent } from './slider/slider.component';
+import { StaffListComponent } from './dashboard/staff-list/staff-list.component';
+import { StaffSheetComponent } from './dashboard/staff-sheet/staff-sheet.component';
+import { StaffPlanningComponent } from './dashboard/staff-planning/staff-planning.component';
+import { StaffFormComponent } from './dashboard/staff-form/staff-form.component';
+import { SliderComponent } from './dashboard/slider/slider.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { OurServiceComponent } from './our-service/our-service.component';
-import { TechComponent } from './tech/tech.component';
-import { TeamComponent } from './team/team.component';
-import { LocationComponent } from './location/location.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { OurServiceComponent } from './dashboard/our-service/our-service.component';
+import { TechComponent } from './dashboard/tech/tech.component';
+import { TeamComponent } from './dashboard/team/team.component';
+import { LocationComponent } from './dashboard/location/location.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
     DashboardComponent,
     StaffListComponent,
     StaffSheetComponent,
@@ -60,7 +60,9 @@ import { RegisterComponent } from './register/register.component';
     TeamComponent,
     LocationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AuthLayoutComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     HttpClientModule,

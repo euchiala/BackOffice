@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StaffService } from '../services/staff.service';
+import { StaffService } from '../../services/staff.service';
 
 @Component({
   selector: 'app-staff-form',

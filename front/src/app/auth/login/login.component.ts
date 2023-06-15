@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +31,7 @@ export class LoginComponent {
       (response) => {
         // Handle the login success logic here
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['dashboard']);
       },
       (error) => {
         // Handle the login error logic here

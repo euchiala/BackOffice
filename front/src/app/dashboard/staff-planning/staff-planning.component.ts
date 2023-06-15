@@ -1,8 +1,8 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PlanningService } from '../services/planning.service';
-import { StaffService } from '../services/staff.service';
+import { PlanningService } from '../../services/planning.service';
+import { StaffService } from '../../services/staff.service';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
