@@ -27,10 +27,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-raised-button [disabled]="isFrontendEditorActive" [ngClass]="{'active': isFrontendEditorActive}" (click)="activateFrontendEditor()">
+      <button mat-raised-button [disabled]="isFrontendEditorActive"  (click)="activateFrontendEditor()">
         FrontEnd Editor
       </button>
-      <button mat-raised-button [disabled]="isManagementSystemActive" [ngClass]="{'active': isManagementSystemActive}" (click)="activateManagementSystem()">
+      <button mat-raised-button [disabled]="isManagementSystemActive"  (click)="activateManagementSystem()">
         Management system
       </button>
         <button class="btn-primary" mat-menu-item></button>
