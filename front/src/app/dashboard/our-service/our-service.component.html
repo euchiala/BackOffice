@@ -15,11 +15,21 @@
                 </textarea>
         </mat-form-field>
 
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" name="file">
-
         <button type="submit" mat-raised-button>SAVE</button>
 
       </form>
     </mat-card-content>
   </mat-card>
+  <div class="row" >
+    <div class="col-lg-4" *ngFor="let item of dataSource;">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{item.header}}</h5>
+          <p class="card-text">{{item.text}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

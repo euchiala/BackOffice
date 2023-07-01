@@ -11,7 +11,7 @@
       </mat-nav-list>
 
       <mat-nav-list  *ngIf="isFrontendEditorActive">
-          <a mat-list-item routerLink="/slider/slider"><span class="nav-item"><mat-icon>view_array</mat-icon> <span
+          <a mat-list-item routerLink="/slider"><span class="nav-item"><mat-icon>view_array</mat-icon> <span
                       class="nav-item-text">Slider</span></span></a>
           <a mat-list-item routerLink="/about"><span class="nav-item"><mat-icon>info</mat-icon> <span
                       class="nav-item-text">Qui somme nous ?</span></span></a>
@@ -40,7 +40,7 @@
               <div fxFlex></div>
 
               <div class="toolbar-separator"></div>
-              <button class="" mat-menu-item>
+              <button class="" mat-menu-item (click)="logout()">
                   <mat-icon>power_settings_new</mat-icon>
               </button>
           </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FrontContentService } from '../../services/front-content.service';
@@ -12,8 +12,7 @@ import { FrontContentService } from '../../services/front-content.service';
 export class SliderComponent implements OnInit {
   form!: FormGroup;
   files!: FormArray;
-  dataSource :any;
-
+  dataSource: any;
 
   constructor(
     private frontContentService: FrontContentService,
@@ -21,43 +20,28 @@ export class SliderComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      files: new FormArray([])
+    this.form = this.formBuilder.group({
+      header: [null, Validators.required],
+      text: [null, Validators.required],
+      files: this.formBuilder.array([])
     });
     this.files = this.form.get('files') as FormArray;
 
-    this.frontContentService.getByReference('slider').subscribe((items)=>{
-      for (var i = 0; i < Object.keys(items).length; i++) {
-        console.log(items[i].file)
-        items[i].file = 'http://localhost:3000/'+items[i].file.replace(/\\/g, '/');
+    this.frontContentService.getByReference('slider').subscribe((items) => {
+      for (let i = 0; i < Object.keys(items).length; i++) {
+        items[i].file = 'http://localhost:3000/' + items[i].file.replace(/\\/g, '/');
       }
       this.dataSource = items;
-      console.log(this.dataSource);
     });
-
   }
 
-  addFileInput() {
-    this.files.push(this.formBuilder.control(null));
-  }
-
-  removeFile(index: number) {
-    this.files.removeAt(index);
-  }
-
-  onSubmit() {
-    const formData = new FormData();
-    for (let i = 0; i < this.files.length; i++) {
-      const file = this.selectedFiles[i];
-      formData.append(`file`, file);
-      formData.append(`reference`, 'slider');
-    }
-    this.frontContentService.add(formData).subscribe(
+  delete(id: String) {
+    this.frontContentService.delete(id).subscribe(
       (response) => {
-        this.router.navigate(['/staff']);
+        window.location.reload();
       },
       (error) => {
         console.error(error);
@@ -65,17 +49,44 @@ export class SliderComponent implements OnInit {
     );
   }
 
+  onSubmit() {
+    const formData = new FormData();
+    const file = this.selectedFiles[0];
+    formData.append('file', file);
+    formData.append('header', this.form.value.header);
+    formData.append('text', this.form.value.text);
+    formData.append('reference', 'slider');
+
+    this.frontContentService.add(formData).subscribe(
+      (response) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
   selectedFiles: File[] = [];
 
-  onFileSelected(event: Event, index: number) {
+  onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files?.[0];
     if (file) {
-      console.log(this.files.controls)
+      console.log(this.files.controls);
 
-      this.selectedFiles[index] = file;
-      this.files.controls[index].setValue(file.name); // Update the FormControl with the file name
+      this.selectedFiles[0] = file;
+      this.files.controls[0].setValue(file.name); // Update the FormControl with the file name
     }
   }
+
+  createFileFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      file: null,
+      text: '',
+      textarea: '',
+      checkbox: false
+    });
+  }
+
 }

@@ -5,7 +5,7 @@ import { StaffListComponent } from './staff-list/staff-list.component';
 import { StaffFormComponent } from './staff-form/staff-form.component';
 import { StaffSheetComponent } from './staff-sheet/staff-sheet.component';
 import { StaffPlanningComponent } from './staff-planning/staff-planning.component';
-import { AboutUsComponent } from '../about-us/about-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { LocationComponent } from './location/location.component';
 import { OurServiceComponent } from './our-service/our-service.component';
 import { SliderComponent } from './slider/slider.component';
@@ -54,7 +54,7 @@ const routes: Routes = [
         component:OurServiceComponent,
       },
       {
-        path:'slider/:reference',
+        path:'slider',
         component:SliderComponent,
       },
       {

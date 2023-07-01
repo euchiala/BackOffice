@@ -33,7 +33,7 @@ import { StaffSheetComponent } from './dashboard/staff-sheet/staff-sheet.compone
 import { StaffPlanningComponent } from './dashboard/staff-planning/staff-planning.component';
 import { StaffFormComponent } from './dashboard/staff-form/staff-form.component';
 import { SliderComponent } from './dashboard/slider/slider.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import { AboutUsComponent } from './dashboard/about-us/about-us.component';
 import { OurServiceComponent } from './dashboard/our-service/our-service.component';
 import { TechComponent } from './dashboard/tech/tech.component';
 import { TeamComponent } from './dashboard/team/team.component';

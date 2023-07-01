@@ -3,9 +3,7 @@ module.exports = (app) => {
 
   app.post("/frontcontent", frontContent.create);
 
-  app.get("/frontcontent", frontContent.getAll);
-
-  app.get('/frontcontent/:reference', frontContent.findOne);
+  app.get('/:reference', frontContent.findOne);
 
   app.put("/frontcontent/:id", frontContent.update);
 

@@ -20,7 +20,7 @@ export class FrontContentService {
     }
   }
   getByReference(reference: any): Observable<any> {
-    return this.http.get(API_URL + `frontcontent/${reference}`);
+    return this.http.get(API_URL + `${reference}`);
   }
   delete(id: any): Observable<any> {
     return this.http.delete(API_URL + `frontcontent/${id}`);

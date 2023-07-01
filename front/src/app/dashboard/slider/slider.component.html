@@ -1,33 +1,36 @@
 <div class="container">
-  <mat-card>
+  <mat-card >
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div formArrayName="files">
-          <div *ngFor="let file of files.controls; let i = index">
-            <input type="file" (change)="onFileSelected($event, i)" accept="image/*" name="file">
-            <button mat-icon-button color="warn" (click)="removeFile(i)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-        </div>
-        <button type="button" mat-raised-button color="primary" (click)="addFileInput()">Add File</button>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="..." formControlName="header">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="6" cols="100" maxlength="4000" formControlName="text"></textarea>
+        </mat-form-field>
+
+          <mat-label>Image</mat-label>
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" name="file">
+
         <button type="submit" mat-raised-button color="primary">Save</button>
+
       </form>
-
     </mat-card-content>
-    <div class="row" >
-      <div class="col-lg-4" *ngFor="let file of dataSource;">
-
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="{{file.file}}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+  </mat-card>
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let file of dataSource;">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{file.file}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{file.header}}</h5>
+          <p class="card-text">{{file.text}}</p>
+          <a href="#" class="btn btn-danger" (click)="delete(file.id)">delete</a>
         </div>
       </div>
     </div>
-  </mat-card>
+  </div>
 </div>

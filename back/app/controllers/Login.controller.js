@@ -1,4 +1,6 @@
 const User = require('../models/User.model');
+const jwt = require('jsonwebtoken');
+const secretKey = 'HW2avRAYAblXmslDHeG8gMXdqDQ5QVgn';
 
 exports.login = (req, res) => {
   const { username, password } = req.body;
@@ -13,7 +15,8 @@ exports.login = (req, res) => {
           if (err) {
             res.status(500).send({ message: 'Error comparing passwords' });
           } else if (isMatch) {
-            res.status(200).send({ message: 'Login successful' });
+            const token = jwt.sign({ username: user.username }, secretKey);
+            res.status(200).send({ message: 'Login successful', token: token });
           } else {
             res.status(401).send({ message: 'Invalid credentials' });
           }
