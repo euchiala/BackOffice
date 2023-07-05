@@ -85,6 +85,9 @@ export class StaffListComponent {
         this.staffService.getAll().subscribe((res: any) => {
             for (var i = 0; i < Object.keys(res).length; i++) {
                 res[i]['presence'] = this.presence;
+                if(res[i]['file'])
+                    res[i]['file'] = 'http://localhost:3000/' + res[i].file.replace(/\\/g, '/');
+                  
                 this.dataSource = res;
             }
             this.AttHService.getAll().subscribe((result: any[]) => {

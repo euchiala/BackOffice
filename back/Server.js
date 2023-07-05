@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 var cors = require('cors')
 var app = express()
+
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +18,7 @@ require('./app/routes/Planning.routes')(app);
 require('./app/routes/Staff.routes')(app);
 require('./app/routes/FrontContent.routes')(app);
 require('./app/routes/Login.routes')(app);
+require('./app/routes/Smtp.routes')(app);
 
 
 app.listen(3000, () => {

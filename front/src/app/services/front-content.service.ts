@@ -25,8 +25,12 @@ export class FrontContentService {
   delete(id: any): Observable<any> {
     return this.http.delete(API_URL + `frontcontent/${id}`);
   }
-  update(id: any, object: any): Observable<any> {
-    return this.http.put(API_URL + `frontcontent/${id}`, object);
+  update(id: any, data: object | FormData): Observable<any> {
+    if (data instanceof FormData) {
+      return this.http.put(API_URL + `frontcontent/${id}`, data);
+    } else {
+      return this.http.put(API_URL + `frontcontent/${id}`, data);
+    }
   }
   getById(id: any): Observable<any> {
     return this.http.get(API_URL + `frontcontent/${id}`);

@@ -46,15 +46,16 @@ export class StaffPlanningComponent {
     }
     ngOnInit() {
         this.currentItemID = this.activatedRoute.snapshot.params["id"];
-
         setTimeout(() => {
-            return this.planningService.getById(this.currentItemID).subscribe((data => {
-                for (var i = 0; i < Object.keys(data).length; i++) {
-                    var att = data[i].start.split("T", 1);
-                    data[i]['start'] = att[0];
-                    this.calendar = data;
-                    this.color = data[i]['color'];
-                }
+            return this.staffService.getById(this.currentItemID).subscribe((data => {
+                this.color = data.color;
+                this.planningService.getById(this.currentItemID).subscribe((res => {
+                    for (var i = 0; i < Object.keys(res).length; i++) {
+                        var att = res[i].start.split("T", 1);
+                        res[i]['start'] = att[0];
+                        this.calendar = res;
+                    }
+                }))
             }))
         }, 100);
         setTimeout(() => {
@@ -88,6 +89,7 @@ export class StaffPlanningComponent {
 
                 allDay: selectInfo.allDay
             });
+            console.log(selectInfo.startStr);
             let object = {
                 'staffId': this.currentItemID,
                 'title': title,

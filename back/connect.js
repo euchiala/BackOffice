@@ -5,6 +5,7 @@ var cnx  = mysql.createPool({
     port            : '3306',
     user            : 'root',
     password        : '',
-    database        : 'intekk_consulting'
+    database        : 'intekk_consulting',
+    timezone: 'utc'
   });
 module.exports = cnx;

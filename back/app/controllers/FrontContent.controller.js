@@ -26,11 +26,12 @@ const upload = multer({ storage: storage, fileFilter: fileFilter }).single(
 );
 
 exports.create = (req, res) => {
+  console.log(req.body);
   upload(req, res, function (err) {
     if (err) {
       return res.status(400).send({ message: err.message });
     }
-
+    
     const frontContent = new FrontContent(req.body);
     if (req.file) {
       frontContent.file = req.file.path;
@@ -44,36 +45,20 @@ exports.create = (req, res) => {
       }
     });
   });
+  
 };
 
 
 exports.update = (req, res) => {
-  if (req.file) {
     upload(req, res, function (err) {
       if (err) {
         return res.status(400).send({ message: err.message });
       }
-
-      FrontContent.findById(req.params.id, (err, existingFrontContent) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        if (!existingFrontContent) {
-          return res
-            .status(404)
-            .send({
-              message: `frontcontent with id ${req.params.id} NOT FOUND`,
-            });
-        }
-
         const updatedFrontContent = new FrontContent(req.body);
 
         if (req.file) {
           updatedFrontContent.file = req.file.path;
-        } else {
-          updatedFrontContent.file = existingFrontContent.file;
         }
-
         FrontContent.updateByID(
           req.params.id,
           updatedFrontContent,
@@ -98,31 +83,7 @@ exports.update = (req, res) => {
             }
           }
         );
-      });
     });
-  } else {
-    const updatedFrontContent = new FrontContent(req.body);
-    FrontContent.updateByID(req.params.id, updatedFrontContent, (err, data) => {
-      if (err) {
-        if (err.type === "not_found") {
-          res
-            .status(404)
-            .send({
-              message: `frontcontent with id ${req.params.id} NOT FOUND`,
-            });
-        } else {
-          res
-            .status(500)
-            .send({
-              message: `Error updating frontcontent with id ${req.params.id}`,
-              err,
-            });
-        }
-      } else {
-        res.status(200).send(data);
-      }
-    });
-  }
 };
 
 exports.getAll = (req, res) => {
@@ -138,6 +99,21 @@ exports.getAll = (req, res) => {
 exports.findOne = (req, res) => {
   const {reference} = req.params;
   FrontContent.findByReference(reference, (err, data) => {
+      if (err) {
+          if (err.type === 'not_found') {
+              res.status(404).send({message: `frontContent with reference ${reference} NOT FOUND`});
+          } else {
+              res.status(500).send({message: `Error getting frontContent with reference ${reference}`});
+          }
+      } else {
+          res.status(200).send(data);
+      }
+  })
+}
+
+exports.findById = (req, res) => {
+  const {id} = req.params;
+  FrontContent.findById(id, (err, data) => {
       if (err) {
           if (err.type === 'not_found') {
               res.status(404).send({message: `frontContent with reference ${reference} NOT FOUND`});

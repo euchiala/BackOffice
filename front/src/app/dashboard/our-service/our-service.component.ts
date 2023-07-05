@@ -11,7 +11,8 @@ import { FrontContentService } from '../../services/front-content.service';
 })
 export class OurServiceComponent {
   form!: FormGroup;
-  dataSource :any;
+  dataSource: any;
+  currentItemID: String = "";
 
   constructor(
     private frontContentService: FrontContentService,
@@ -19,15 +20,31 @@ export class OurServiceComponent {
     private http: HttpClient,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      header: new FormControl(null, [Validators.required]),
-      text: new FormControl(null, [Validators.required]),
+    this.currentItemID = this.activatedRoute.snapshot.params["id"];
+    if (!!this.currentItemID) {
+      this.frontContentService.getById(this.currentItemID).subscribe((item1) => {
+        this.initFormUpdate(item1[0])
+      });
+    } else {
+      this.initForm();
+    }
+  }
+  initFormUpdate(object: any) {
+    this.form = this.formBuilder.group({
+      header: [object.header, Validators.required],
+      text: [object.text, Validators.required],
     });
-    this.frontContentService.getByReference('service').subscribe((items)=>{
-      this.dataSource = items;
+  }
+
+
+  initForm() {
+    this.form = this.formBuilder.group({
+      header: [null, Validators.required],
+      text: [null, Validators.required],
+
     });
   }
 
@@ -35,17 +52,27 @@ export class OurServiceComponent {
   onSub() {
     const formData = new FormData();
 
-      formData.append(`header`, this.form.value.header);
-      formData.append(`text`, this.form.value.text);
-      formData.append(`reference`, 'service');
+    formData.append(`header`, this.form.value.header);
+    formData.append(`text`, this.form.value.text);
+    formData.append(`reference`, 'service');
 
-    this.frontContentService.add(formData).subscribe(
+    if (!!this.currentItemID){
+      this.frontContentService.update(this.currentItemID,formData).subscribe(
+        (response) => {
+          this.router.navigate(['/service']);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      this.frontContentService.add(formData).subscribe(
       (response) => {
-        window.location.reload()
+        this.router.navigate(['/service']);
       },
       (error) => {
         console.error(error);
       }
-    );
+    );}
   }
 }

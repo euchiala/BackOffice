@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card >
+  <mat-card *ngIf="form">
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
@@ -16,21 +16,11 @@
           <mat-label>Image</mat-label>
           <input type="file" (change)="onFileSelected($event)" accept="image/*" name="file">
 
+          <mat-checkbox formControlName="checkbox">Add from</mat-checkbox>
+
         <button type="submit" mat-raised-button color="primary">Save</button>
 
       </form>
     </mat-card-content>
   </mat-card>
-  <div class="row">
-    <div class="col-lg-4" *ngFor="let file of dataSource;">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{file.file}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{file.header}}</h5>
-          <p class="card-text">{{file.text}}</p>
-          <a href="#" class="btn btn-danger" (click)="delete(file.id)">delete</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

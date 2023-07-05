@@ -19,7 +19,7 @@ import { MatListModule} from '@angular/material/list';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule} from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +42,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { SliderContentComponent } from './dashboard/slider-content/slider-content.component';
+import { ServiceContentComponent } from './dashboard/service-content/service-content.component';
+import { PartnersComponent } from './dashboard/partners/partners.component';
 
 
 
@@ -62,7 +65,10 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
     LoginComponent,
     RegisterComponent,
     AuthLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    SliderContentComponent,
+    ServiceContentComponent,
+    PartnersComponent
   ],
   imports: [
     HttpClientModule,

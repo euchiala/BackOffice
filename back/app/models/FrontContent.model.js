@@ -7,6 +7,7 @@ const FrontContent = function (object) {
   this.text = object.text;
   this.links = object.links;
   this.reference = object.reference;
+  this.checkbox = object.checkbox;
   this.file = object.file;
 };
 
@@ -39,10 +40,19 @@ FrontContent.findByReference = (reference, result) => {
   });
 };
 
+FrontContent.findById = (id, result) => {
+  sql.query(`SELECT * FROM frontcontent WHERE id = '${id}'`, (err, res) => {
+      if(err)
+          result(err, null);
+      else
+          result(null, res);
+  });
+};
+
 FrontContent.updateByID = (id, object, result) => {
   sql.query(
-    'UPDATE frontcontent SET header = ?, subheader = ?, text = ?, links = ?, reference = ? WHERE id = ?',
-    [object.header, object.subheader, object.text, object.links, object.reference, id],
+    'UPDATE frontcontent SET header = ?, subheader = ?, text = ?, links = ?, reference = ?, file = ?,checkbox = ? WHERE id = ?',
+    [object.header, object.subheader, object.text, object.links, object.reference, object.file, object.checkbox, id],
     (err, res) => {
       if (err) {
         result(err, null);

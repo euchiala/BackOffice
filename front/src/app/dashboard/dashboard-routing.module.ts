@@ -12,6 +12,9 @@ import { SliderComponent } from './slider/slider.component';
 import { TeamComponent } from './team/team.component';
 import { TechComponent } from './tech/tech.component';
 import { DashboardLayoutComponent } from '../layouts/dashboard-layout/dashboard-layout.component';
+import { SliderContentComponent } from './slider-content/slider-content.component';
+import { ServiceContentComponent } from './service-content/service-content.component';
+import { PartnersComponent } from './partners/partners.component';
 
 const routes: Routes = [
       {
@@ -50,12 +53,28 @@ const routes: Routes = [
         component:LocationComponent,
       },
       {
-        path:'service',
+        path:'service-form',
         component:OurServiceComponent,
       },
       {
-        path:'slider',
+        path:'service/:id/edit',
+        component:OurServiceComponent,
+      },
+      {
+        path:'service',
+        component:ServiceContentComponent,
+      },
+      {
+        path:'slider-form',
         component:SliderComponent,
+      },
+      {
+        path:'slider/:id/edit',
+        component:SliderComponent,
+      },
+      {
+        path:'slider',
+        component:SliderContentComponent,
       },
       {
         path:'team',
@@ -64,6 +83,10 @@ const routes: Routes = [
       {
         path:'tech',
         component:TechComponent,
+      },
+      {
+        path:'partners',
+        component:PartnersComponent,
       },
 ];
 

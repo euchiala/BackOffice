@@ -12,6 +12,8 @@ export class AboutUsComponent {
 
   form!: FormGroup;
   about:any;
+  currentItemID: string = '';
+
   constructor(
     private frontContentService: FrontContentService,
     private formBuilder: FormBuilder,
@@ -23,6 +25,7 @@ export class AboutUsComponent {
   ngOnInit() {
     this.frontContentService.getByReference('about').subscribe((item) => {
       this.about = item[0]
+      this.currentItemID = item[0].id;
       if (this.about) {
         this.initFormLocation(this.about);
       } else {
@@ -51,14 +54,25 @@ export class AboutUsComponent {
     formData.append(`text`, this.form.value.text);
     formData.append(`reference`, 'about');
 
-    this.frontContentService.add(formData).subscribe(
-      (response) => {
-        window.location.reload()
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  if (!!this.currentItemID) {
+      this.frontContentService.update(this.currentItemID, formData).subscribe(
+        (response) => {
+          window.location.reload();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      this.frontContentService.add(formData).subscribe(
+        (response) => {
+          window.location.reload();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
   }
 
 }

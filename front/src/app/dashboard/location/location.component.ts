@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FrontContentService } from '../../services/front-content.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-location',
@@ -9,23 +10,23 @@ import { FrontContentService } from '../../services/front-content.service';
   styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
-
   form!: FormGroup;
   currentItemID: string = '';
-  location = '';
+  location: SafeHtml = '';
 
   constructor(
     private frontContentService: FrontContentService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-
     this.frontContentService.getByReference('location').subscribe((item) => {
-      this.location = item[0].text
-      if (this.location != '') {
-        this.initFormLocation(this.location);
+      this.location = this.sanitizer.bypassSecurityTrustHtml(item[0].text);
+      this.currentItemID = item[0].id;
+      if (this.location !== '') {
+        this.initFormLocation(item[0].text);
       } else {
         this.initForm();
       }
@@ -38,7 +39,7 @@ export class LocationComponent implements OnInit {
     });
   }
 
-  initFormLocation(location: any): void {
+  initFormLocation(location: SafeHtml): void {
     this.form = new FormGroup({
       text: new FormControl(location, [Validators.required]),
     });
@@ -49,7 +50,7 @@ export class LocationComponent implements OnInit {
     if (!!this.currentItemID) {
       this.frontContentService.update(this.currentItemID, objectToSubmit).subscribe(
         (response) => {
-          window.location.reload()
+          window.location.reload();
         },
         (error) => {
           console.error(error);
@@ -58,7 +59,7 @@ export class LocationComponent implements OnInit {
     } else {
       this.frontContentService.add(objectToSubmit).subscribe(
         (response) => {
-          window.location.reload()
+          window.location.reload();
         },
         (error) => {
           console.error(error);

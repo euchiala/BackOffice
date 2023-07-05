@@ -5,6 +5,8 @@ module.exports = (app) => {
 
   app.get('/:reference', frontContent.findOne);
 
+  app.get('/frontcontent/:id', frontContent.findById);
+
   app.put("/frontcontent/:id", frontContent.update);
 
   app.delete("/frontcontent/:id", frontContent.delete);
