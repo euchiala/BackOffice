@@ -11,7 +11,9 @@ export class SmtpService {
   
 
   sendEmail(data: any): Observable<any> {
-      return this.http.post(API_URL + 'smtp', data);
+      return this.http.post(API_URL + 'smtp', data,{
+        headers: { enctype : "multipart/form-data" },
+      });
     
   }
 }

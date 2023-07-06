@@ -67,23 +67,41 @@ exports.findOne = (req, res) => {
         }
     })
 }
-
 exports.update = (req, res) => {
-    staff.update(
-        req.params.id,
-        new staff(req.body),
-        (err, data) => {
-            if (err) {
-                if (err.type === 'not_found') {
-                    res.status(404).send({ message: `staff with id ${req.params.id} NOT FOUND` });
-                } else {
-                    res.status(500).send({ message: `Error updating staff with id ${req.params.id}`, err });
-                }
-            } else {
-                res.status(200).send(data);
-            }
+    upload(req, res, function (err) {
+      if (err) {
+        return res.status(400).send({ message: err.message });
+      }
+        const updatedFrontContent = new staff(req.body);
+
+        if (req.file) {
+          updatedFrontContent.file = req.file.path;
         }
-    )
+        staff.update(
+          req.params.id,
+          updatedFrontContent,
+          (err, data) => {
+            if (err) {
+              if (err.type === "not_found") {
+                res
+                  .status(404)
+                  .send({
+                    message: `frontcontent with id ${req.params.id} NOT FOUND`,
+                  });
+              } else {
+                res
+                  .status(500)
+                  .send({
+                    message: `Error updating frontcontent with id ${req.params.id}`,
+                    err,
+                  });
+              }
+            } else {
+              res.status(200).send(data);
+            }
+          }
+        );
+    });
 };
 
 exports.delete = (req, res) => {

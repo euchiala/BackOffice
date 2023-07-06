@@ -1,7 +1,10 @@
-<div class="container">
-    <button mat-raised-button routerLink="/slider-form" style="float:right">
-        <mat-icon>library_add</mat-icon>
+<div class="container content-container">
+  <div class="top-container">
+    <button mat-raised-button routerLink="/slider-form" class="btn-add">
+      <i class="fa-solid fa-plus" style="color: #00adb5;"></i>
       </button>
+    </div> 
+    <div class="body-container"> 
     <div class="row">
       <div class="col-lg-4" *ngFor="let file of dataSource;">
         <div class="card" style="width: 18rem;">
@@ -9,8 +12,10 @@
           <div class="card-body">
             <h5 class="card-title">{{file.header}}</h5>
             <p class="card-text">{{file.text}}</p>
+            <div class="btn-card">
             <a href="#" class="btn btn-primary" routerLink="{{file.id}}/edit/">update</a>
             <a href="#" class="btn btn-danger" (click)="delete(file.id)">delete</a>
+            </div>
           </div>
         </div>
       </div>

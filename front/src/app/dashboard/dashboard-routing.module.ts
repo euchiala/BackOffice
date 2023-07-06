@@ -15,6 +15,8 @@ import { DashboardLayoutComponent } from '../layouts/dashboard-layout/dashboard-
 import { SliderContentComponent } from './slider-content/slider-content.component';
 import { ServiceContentComponent } from './service-content/service-content.component';
 import { PartnersComponent } from './partners/partners.component';
+import { OfferComponent } from './offer/offer.component';
+import { OfferContentComponent } from './offer-content/offer-content.component';
 
 const routes: Routes = [
       {
@@ -63,6 +65,18 @@ const routes: Routes = [
       {
         path:'service',
         component:ServiceContentComponent,
+      },
+      {
+        path:'offer-form',
+        component:OfferComponent,
+      },
+      {
+        path:'offer/:id/edit',
+        component:OfferComponent,
+      },
+      {
+        path:'offer',
+        component:OfferContentComponent,
       },
       {
         path:'slider-form',

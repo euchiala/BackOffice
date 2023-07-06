@@ -25,7 +25,7 @@ export class StaffFormComponent {
       phone: [null, Validators.required],
       adress: [null, Validators.required],
       links: [null, Validators.required],
-      cin: [null, Validators.required],
+      position: [null, Validators.required],
       color: [null, Validators.required],
       files: this.formBuilder.array([])
     });
@@ -40,7 +40,7 @@ export class StaffFormComponent {
       phone: [staff.phone, Validators.required],
       adress: [staff.adress, Validators.required],
       links: [staff.links, Validators.required],
-      cin: [staff.cin, Validators.required],
+      position: [staff.position, Validators.required],
       color: [staff.color, Validators.required],
       files: this.formBuilder.array([])
     });
@@ -80,7 +80,7 @@ export class StaffFormComponent {
     formData.append('phone', this.form.value.phone);
     formData.append('adress', this.form.value.adress);
     formData.append('links', this.form.value.links);
-    formData.append('cin', this.form.value.cin);
+    formData.append('position', this.form.value.position);
     formData.append('color', this.form.value.color);
 
     if (!!this.currentItemID) {

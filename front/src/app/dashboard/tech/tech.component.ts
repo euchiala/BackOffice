@@ -51,23 +51,26 @@ export class TechComponent implements OnInit {
   onSub(): void {
     const formData = new FormData();
     const file = this.selectedFiles[0];
+    formData.append('file',file,file.name);
     const objectToSubmit = { ...this.form.value, file: file };
     // formData.append('file', file);
-    // formData.append('firstName', this.form.value.firstName);
-    // formData.append('lastName', this.form.value.lastName);
-    // formData.append('email', this.form.value.email);
-    // formData.append('phone', this.form.value.phone);
-    // formData.append('links', this.form.value.links);
+    formData.append('firstName', this.form.value.firstName);
+    formData.append('lastName', this.form.value.lastName);
+    formData.append('email', this.form.value.email);
+    formData.append('phone', this.form.value.phone);
+    formData.append('links', this.form.value.links);
+    formData.append('cin', this.form.value.links);
     
-    this.smtpService.sendEmail(objectToSubmit).subscribe(
+    this.smtpService.sendEmail(formData).subscribe(
       (response) => {
         // Success handling
-        // window.location.reload();
       },
       (error) => {
         // Error handling
         console.error(error);
       }
     );
+    window.location.reload();
+
   }
 }

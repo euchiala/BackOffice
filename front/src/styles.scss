@@ -1,4 +1,248 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-Bold.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-Regular.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-Black.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-Medium.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-Light.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-ExtraLight.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Koshi';
+  src: url('assets/fonts/ArimaKoshi-Thin.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-Black.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-Bold.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Koshi Semi';
+  src: url('assets/fonts/ArimaKoshi-SemiBold.woff2') format('woff2'),
+      url('assets/fonts/ArimaKoshi-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-Thin.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-ExtraLight.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-Regular.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-Light.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai Semi';
+  src: url('assets/fonts/ArimaMadurai-SemiBold.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arima Madurai';
+  src: url('assets/fonts/ArimaMadurai-Medium.woff2') format('woff2'),
+      url('assets/fonts/ArimaMadurai-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Arima Madurai Semi'!important;}
+.mat-toolbar .mdc-button{
+  margin: 6px;
+  box-shadow: 1px 1px 10px #a6a6a6 !important;
+}
+.mat-mdc-raised-button:disabled {
+  background-color: #25a4a9 !important;
+  color: #3c3c3c !important;
+}
+.mat-mdc-nav-list .mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color
+{
+  color: #9e9e9e;
+}
+.mat-mdc-nav-list .nav-item-text{
+  font-family: 'Arima Madurai' !important;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #3c3c3c;
+}
+/*body app-root , body .ng-star-inserted{
+  height: 100%;
+  display: block;
+}*/
+body mat-sidenav-container{
+height: 100%;
+}
+.container.content-container .top-container .btn-add{
+  padding: 0;
+  min-width: 40px;
+  justify-content: center;
+  float: left;
+}
+.container.content-container .top-container .btn-add .fa-plus{
+  font-size: 24px;
+}
+.container.content-container{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.container.content-container .top-container{
+  margin-top: 12px;
+  float: left;
+}
+.container.content-container .body-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.container.content-container .body-container .row{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.container.content-container .body-container .row .ng-star-inserted{
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.container.content-container .body-container .row .ng-star-inserted .card .card-body{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container.content-container .body-container .row .ng-star-inserted .card .btn-card{
+  margin-top: auto;
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.container.content-container .body-container .row .ng-star-inserted .card{
+  height: 100%;
+}
+.container.content-container .body-container .row .ng-star-inserted .card .btn-card a{
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #25a4a9;
+  border: none;
+}
+.form-container{
+  padding-top: 20px;
+}
+.form-container form button ,.form-container .partnr.btn-card a{
+  background-color: #25a4a9 !important;
+  float:right;
+  color: #fff !important;
+  font-size: 14px;
+}
+.form-container > .partner-add{
+  margin: 0px 13px 13px 13px;
+}
+.fc-header-toolbar .fc-prev-button, .fc-header-toolbar .fc-next-button, .fc-header-toolbar .fc-dayGridMonth-button, .fc-header-toolbar .fc-timeGridWeek-button, .fc-header-toolbar .fc-timeGridDay-button , .fc-header-toolbar .fc-listWeek-button, .fc-header-toolbar .fc-today-button{
+  background-color: #989898;
+  border: none;
+}
+.form-container.location{
+  padding-bottom: 20px;
+}

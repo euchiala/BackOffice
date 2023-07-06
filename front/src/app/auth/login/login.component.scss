@@ -1,0 +1,78 @@
+.loginpage {
+
+    background: linear-gradient(180deg, #33BDC3 11%, #CDE7E9 60%, rgb(234, 234, 236) 92%, rgb(255, 255, 255) 100%);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+}
+.login-container{
+        background-color: #fff;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+       
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        display: table;
+        margin: 16% auto 0;
+        width: 500px;
+    
+    .mat-mdc-card {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+        .mat-mdc-form-field {
+            display: block;
+        }
+       
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        font-size: small;
+        margin-bottom: 10px;
+        font-weight:550;
+    }
+    form{
+        h3 {
+            font-size: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            margin: 0 0 23px;
+            padding: 0 0 15px;
+           
+        }
+      
+        
+     
+
+        
+        button[type="submit"] {
+            margin-top: 20px;
+            background: #33BDC3;
+            color: #fff;
+            width: 100%;
+        }
+        
+        label:nth-of-type(2) {
+            margin-top: 30px;
+            
+        }
+        
+        
+    }
+}
+
+
+
+
+
+/* input[type="submit"]:hover {
+    background-color: rgb(163, 163, 163);
+    color: black;
+} */
+

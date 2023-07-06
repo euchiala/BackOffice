@@ -45,8 +45,8 @@ export class SliderComponent implements OnInit {
   
   initForm() {
     this.form = this.formBuilder.group({
-      header: [null, Validators.required],
-      text: [null, Validators.required],
+      header: [''],
+      text: [''],
       checkbox: false,
       files: this.formBuilder.array([])
     });

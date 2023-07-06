@@ -7,7 +7,7 @@ const staff = function (object) {
     this.phone = object.phone;
     this.adress = object.adress;
     this.links = object.links;
-    this.cin = object.cin;
+    this.position = object.position;
     this.color = object.color;
     this.file = object.file;
 }
@@ -49,12 +49,12 @@ staff.update = (id, object, result) => {
             phone = ?,
             adress = ?,
             links = ?,
-            cin = ?,
+            position = ?,
             color = ?,
             file = ?,
             WHERE id = '${id}'
         `,
-        [object.firstName, object.lastName, object.email, object.phone, object.adress, object.links,object.cin, object.color, object.file],
+        [object.firstName, object.lastName, object.email, object.phone, object.adress, object.links, object.position, object.color, object.file],
         (err, res) => {
             if (err) {
                 result(err, null);

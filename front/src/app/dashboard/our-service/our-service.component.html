@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container form-container">
   <mat-card *ngIf="form">
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="onSub()">
@@ -15,7 +15,7 @@
                 </textarea>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button>SAVE</button>
+        <button type="submit" mat-raised-button>Save</button>
 
       </form>
     </mat-card-content>

@@ -8,3 +8,25 @@
   width: 30px;
   height: 30px;
 }
+.mdc-button {
+  min-width: auto ; 
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+.mdc-data-table__cell {
+ 
+  padding: 0;
+}
+img.rounded-circle.ng-star-inserted {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin: 15px auto;
+}
+.mdc-button.mdc-button--raised.mat-mdc-raised-button.mat-unthemed.mat-mdc-button-base {
+  margin-right: 15px;
+}
+button.mdc-button.mdc-button--raised.mat-mdc-raised-button.mat-unthemed.mat-mdc-button-base {
+  margin: 0 !important;
+}

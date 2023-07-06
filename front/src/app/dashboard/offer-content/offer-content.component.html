@@ -1,0 +1,24 @@
+<div class="container content-container">
+  <div class="top-container">
+    <button mat-raised-button routerLink="/offer-form" class="btn-add">
+      <i class="fa-solid fa-plus" style="color: #00adb5;"></i>
+      </button>
+    </div> 
+    <div class="body-container"> 
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let item of dataSource;">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{item.header}}</h5>
+            <div class="card-text" [innerHTML]="item.text"></div>
+            <div class="btn-card">
+            <a href="#" class="btn btn-primary" routerLink="{{item.id}}/edit/">update</a>
+            <a href="#" class="btn btn-danger" (click)="delete(item.id)">delete</a>          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  </div>
+  

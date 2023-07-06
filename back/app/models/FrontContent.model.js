@@ -1,5 +1,5 @@
 const sql = require('./db');
-
+const tableName = 'frontcontent';
 const FrontContent = function (object) {
   this.id = object.id;
   this.header = object.header;
@@ -42,6 +42,15 @@ FrontContent.findByReference = (reference, result) => {
 
 FrontContent.findById = (id, result) => {
   sql.query(`SELECT * FROM frontcontent WHERE id = '${id}'`, (err, res) => {
+      if(err)
+          result(err, null);
+      else
+          result(null, res);
+  });
+};
+
+FrontContent.getAll = result => {
+  sql.query(`SELECT * FROM ${tableName}`, (err, res) => {
       if(err)
           result(err, null);
       else

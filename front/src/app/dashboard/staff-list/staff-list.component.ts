@@ -13,7 +13,7 @@ export class StaffListComponent {
 
     constructor(private staffService: StaffService, private AttHService: AttHistoService, private router: Router) {
     }
-    displayedColumns: string[] = ["name", "email", "phone", "adress", "cin", "color", "presence", "status", "actions"];
+    displayedColumns: string[] = ["image","name", "email", "phone", "adress", "position", "color", "presence", "status", "actions"];
     dataSource = new MatTableDataSource();
     checkboxes: any;
     attStatus = false;

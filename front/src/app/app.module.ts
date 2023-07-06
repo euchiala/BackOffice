@@ -45,6 +45,8 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { SliderContentComponent } from './dashboard/slider-content/slider-content.component';
 import { ServiceContentComponent } from './dashboard/service-content/service-content.component';
 import { PartnersComponent } from './dashboard/partners/partners.component';
+import { OfferComponent } from './dashboard/offer/offer.component';
+import { OfferContentComponent } from './dashboard/offer-content/offer-content.component';
 
 
 
@@ -68,7 +70,9 @@ import { PartnersComponent } from './dashboard/partners/partners.component';
     DashboardLayoutComponent,
     SliderContentComponent,
     ServiceContentComponent,
-    PartnersComponent
+    PartnersComponent,
+    OfferComponent,
+    OfferContentComponent
   ],
   imports: [
     HttpClientModule,

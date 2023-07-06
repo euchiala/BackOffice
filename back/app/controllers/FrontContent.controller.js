@@ -26,7 +26,6 @@ const upload = multer({ storage: storage, fileFilter: fileFilter }).single(
 );
 
 exports.create = (req, res) => {
-  console.log(req.body);
   upload(req, res, function (err) {
     if (err) {
       return res.status(400).send({ message: err.message });
@@ -86,16 +85,11 @@ exports.update = (req, res) => {
     });
 };
 
-exports.getAll = (req, res) => {
+exports.findAll = (req, res) => {
   FrontContent.getAll((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
+      res.status(err ? 500 : 201).send(err ? err : data);
+  })
 };
-
 exports.findOne = (req, res) => {
   const {reference} = req.params;
   FrontContent.findByReference(reference, (err, data) => {

@@ -1,5 +1,5 @@
-<div class="container">
-    <mat-card *ngIf="form">
+<div class="container form-container">
+    <mat-card *ngIf="form" class="partner-add">
         <mat-card-content>
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
@@ -13,17 +13,21 @@
         </mat-card-content>
     </mat-card>
     <div class="container">
+        <div class="body-container"> 
         <div class="row">
             <div class="col-lg-4" *ngFor="let file of dataSource;">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <img class="card-img-top" src="{{file.file}}"
                             alt="Card image cap">
-                        <a href="#" class="btn btn-danger"
+                            <div class="btn-card partnr">
+                        <a href="#" class="btn"
                             (click)="delete(file.id)">delete</a>
+                           </div> 
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
